@@ -36,6 +36,16 @@ EFFECTS = {
     'Theater Chase Rainbow': theater_chase_rainbow
 }
 
+CANCELLED_SETTINGS = ['cancelled_effect', 'cancelled_effect_color', 'cancelled_effect_delay', 'cancelled_effect_iterations']
+EFFECTS = {
+    'Solid Color': solid_color,
+    'Color Wipe': color_wipe,
+    'Theater Chase': theater_chase,
+    'Rainbow': rainbow,
+    'Rainbow Cycle': rainbow_cycle,
+    'Theater Chase Rainbow': theater_chase_rainbow
+}
+
 
 class RGBStatusPlugin(
 	plugin.RestartNeedingPlugin,
@@ -68,6 +78,10 @@ class RGBStatusPlugin(
             'idle_effect': 'Solid Color',
             'idle_effect_color': '#00ff00',
             'idle_effect_delay': 10,
+
+            'cancelled_effect': 'Solid Color',
+            'cancelled_effect_color': '#00ff00',
+            'cancelled_effect_delay': 10,
         }
 
     def on_settings_save(self, data):
@@ -130,12 +144,22 @@ class RGBStatusPlugin(
             hex_to_rgb(self._settings.get(['idle_effect_color'])),
             self._settings.get_int(['idle_effect_delay']),
         )
+    
+    def run_cancelled_effect(self):
+        self._logger.info('Starting Cancelled Effect')
+        self.run_effect(
+            self._settings.get(['cancelled_effect']),
+            hex_to_rgb(self._settings.get(['cancelled_effect_color'])),
+            self._settings.get_int(['cancelled_effect_delay']),
+        )
 
     def on_event(self, event, payload):
         if event == 'PrintStarted':
             progress_base_color = hex_to_rgb(self._settings.get(['progress_base_color']))
             self.run_effect('Solid Color', progress_base_color, delay=10)
-        elif event in ['PrintDone', 'PrintCancelled']:
+        elif event == 'PrintPaused':
+            self.run_cancelled_effect()
+        elif event == 'PrintDone':
             self.run_idle_effect()
 
 

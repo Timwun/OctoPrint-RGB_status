@@ -7,7 +7,7 @@ Adds RGB LED support to OctoPrint with the ability to choose effects based on th
 Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or manually using this URL:
 
-    https://github.com/EricHigdon/OctoPrint-Rgb_status/archive/master.zip
+    https://github.com/Timwun/OctoPrint-Rgb_status/archive/master.zip
     
 ### Running Without Root
 
@@ -22,7 +22,7 @@ You'll also need to enable SPI by running sudo raspi-config interfacing options 
 
 If you encounter any issues or bugs with the plugin please feel free to make an issue on the repo. I also fully support additions to the plugin from third partys. If you have an idea or an already developed solution that would implement with the plugin well please submit it to the github repo and I will gladly consider additions and contributions.
 
-See the [github page](https://github.com/EricHigdon/OctoPrint-RGB_status/) for more details.
+See the [github page](https://github.com/Timwun/OctoPrint-RGB_status/) for more details.
 
 
-Like the plugin and feeling generous? Consider [donating a few dollars](https://paypal.me/EricHigdon). All funds receieved will be used to purchase more equipment for testing and development.
+Like the plugin and feeling generous? Consider [donating a few dollars](https://paypal.me/EricHigdon). All funds receieved will be used to purchase more equipment for testing and development. (Only for the original dev, Eric Higdon!)

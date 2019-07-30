@@ -110,6 +110,31 @@
         </div>
     </div>
 
+    <h4>Paused Effect Settings</h4>
+    <p>Configure the effect that is run when a print is paused</p>
+    <div class="control-group">
+        <label class="control-label" for="cancelledEffect">{{ _('Cancelled Effect') }}</label>
+        <div class="controls">
+            <select class="input-block-level" id="cancelledEffect" data-bind="value: settings.plugins.rgb_status.cancelled_effect">
+		{% for effect in plugin_rgb_status_effects %}
+	            <option value="{{ effect }}">{{ effect }}</option>
+		{% endfor %}
+	    </select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="cancelledEffectColor">{{ _('Cancelled Effect Color') }}</label>
+        <div class="controls">
+            <input type="color" class="input-block-level" id="cancelledEffectColor" data-bind="value: settings.plugins.rgb_status.cancelled_effect_color">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="cancelledEffectWait">{{ _('Cancelled Effect Delay') }}</label>
+        <div class="controls">
+            <input type="number" class="input-block-level" id="cancelledEffectDelay" data-bind="value: settings.plugins.rgb_status.cancelled_effect_delay">
+        </div>
+    </div>
+
     <h4>Progress Bar Settings</h4>
     <div class="control-group">
         <label class="control-label" for="showProgress">{{ _('Show Print Progress') }}</label>
